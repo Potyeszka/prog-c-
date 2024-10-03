@@ -3,41 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace gyak2
+namespace gyak3
 {
-    
     internal class Program
     {
         static void Main(string[] args)
         {
-            /*Vektor3D v = new Vektor3D("AB", 3, 4, 1);
-            
-            Console.WriteLine($"A vektor hossza: { v.Hossz():N3}");
-            Console.WriteLine(v);
-            v.Kiir();
-            Console.ReadLine();*/
 
-
-            Kikoto v = new Kikoto(11);
-            Console.Clear();
-
-            while(Kikoto.N>0)
+            try
             {
-                Console.Clear() ;
-                Kikoto.Mutat();
-                Kikoto.Sorsol();
-                Console.ReadKey();
-
+                StreamReader olvas = new StreamReader("versenyzok.txt");
+                int n = int.Parse(olvas.ReadLine());
+                for (int i = 0; i < n; i++)
+                {
+                    string sor=olvas.ReadLine();
+                    string[] darabok = sor.Split(' ');
+                    //int id=int.Parse(darabok[0].Split('#')[1]);
+                    int id = int.Parse(darabok[0].Trim('#'));
+                    string nev = darabok[1] + " " + darabok[2];
+                    int[] szamok= new int[darabok.Length-3];
+                    for (int j = 0; j < szamok.Length; j++)
+                    {
+                        szamok[j] = int.Parse(darabok[j+3]);
+                    }
+                    Console.WriteLine($"{nev} id: {id} szamok: ");
+                    for (int j = 0; j < szamok.Length; j++)
+                    {
+                        Console.Write(szamok[i]+" ");
+                    }
+                }
             }
-            Console.Clear();
-            Kikoto.Mutat();
-            Console.WriteLine("Vége a játéknak");
-
-            
-
-
-
-        } 
+            catch(Exception e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.ReadLine();
+        }
     }
 }
