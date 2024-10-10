@@ -18,13 +18,12 @@ namespace gyak4
             int n =int.Parse(elemek[2]);
             P=new Pont[n];
 
-            int xIndex = Array.IndexOf(elemek, "x:") + 1;
-            int yIndex = Array.IndexOf(elemek, "y:") + 1;
+            
 
             for (int i = 0; i < n; i++)
             { 
-             double x = double.Parse(elemek[xIndex+1]);
-             double y = double.Parse(elemek[yIndex + 1]);
+             double x = double.Parse(elemek[i+4]);
+             double y = double.Parse(elemek[i+4+n+1]);
                 P[i] = new Pont(x, y);
             }
         }
