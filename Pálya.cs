@@ -23,29 +23,28 @@ namespace gyak4
             for (int i = 0; i < n; i++)
             { 
              double x = double.Parse(elemek[i+4]);
-             double y = double.Parse(elemek[i+4+n+1]);
-                P[i] = new Pont(x, y);
+             double y = double.Parse(elemek[i +4+n + 1]);
+             P[i] = new Pont(x, y);
             }
         }
 
         public void Kiir()
         {
-            Console.WriteLine($"{nev}");
-            foreach (Pont p in P)
+            string adatok = nev;
+            for (int i = 0; i<P.Length;i++)
             {
-                Console.WriteLine(p.ToString() + " ");
-
+                adatok += " " + P[i];
             }
-            Console.WriteLine();
+            Console.WriteLine(adatok);
 
 
         }
 
         public bool Eleme(Pont p)
         {
-            foreach (Pont pont in P)
+            for (int i = 0; i < P.Length; i++)
             {
-                if(pont.x == p.x && pont.y== p.y)
+                if (P[i].x == p.x && P[i].y==p.y)
                 {
                     return true;
                 }

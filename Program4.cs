@@ -11,6 +11,17 @@ namespace gyak4
     {
         static void Main(string[] args)
         {
+            Pont pont = new Pont(2, 3);
+            Console.WriteLine(pont);
+            string adatok = "Név....";
+            Pálya palya = new Pálya(adatok);
+            Console.WriteLine(palya);
+
+            palya.Kiir();
+            Console.WriteLine(palya.Eleme(new Pont(3,3)));
+            Console.WriteLine(palya.Eleme(new Pont(-4, 1)));
+
+            /*
             try
             {
                 string[] sorok = File.ReadAllLines("palyateszt.txt");
@@ -23,7 +34,7 @@ namespace gyak4
             catch (Exception ex)
             {
                 Console.WriteLine($"Hiba történt a fájl beolvasása közben: {ex.Message}");
-            }
+            }*/
 
 
         }
